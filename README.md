@@ -44,7 +44,16 @@ Install Robocop
 
 `bundle install`
 
-Have fun with morse code translation!
+## Run Linters:
+
+### To run rubocop we use:
+`rubocop`
+
+### To autocorrect offenses with rubocop we use:
+`rubocop --auto-correct-all` or
+`rubocop -A`
+
+Have fun acting as the librarian!
 
 ## Authors
 

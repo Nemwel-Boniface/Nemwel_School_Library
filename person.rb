@@ -1,4 +1,8 @@
 class Person
+  # getters and setters
+  attr_reader :id
+  attr_accessor :name, :age
+
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
@@ -6,18 +10,8 @@ class Person
     @parent_permission = parent_permission
   end
 
-  # getters
-  attr_reader :id
-  attr_accessor :name, :age
-
-  # Setters
-
   def can_use_services?
-    if @age >= 18 || @parent_permission
-      true
-    else
-      false
-    end
+    of_age? || @parent_permission
   end
 
   private

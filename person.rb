@@ -1,4 +1,6 @@
-class Person
+require "./nameable.rb"
+
+class Person < Nameable
   # getters and setters
   attr_reader :id
   attr_accessor :name, :age
@@ -8,6 +10,10 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+  end
+
+  def correct_name
+    @name
   end
 
   def can_use_services?

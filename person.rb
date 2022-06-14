@@ -1,4 +1,7 @@
 require "./nameable.rb"
+require "./decorator.rb"
+require "./capitalizedecorator.rb"
+require "./trimmerdecorator.rb"
 
 class Person < Nameable
   # getters and setters

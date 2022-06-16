@@ -17,9 +17,33 @@ def get_choice
   choice
 end
 
+def match_input(choice)
+  method = App.new
+  case choice
+  when 1
+    method.list_all_books
+  when 2
+    method.list_all_people
+  when 3
+    method.create_a_person
+  when 4
+    method.create_a_book
+  when 5
+    method.create_a_rental
+  when 6
+    method.list_all_rentals_id
+  when 7
+    method.quit_app
+  else
+    puts "Not a valid choice"
+  end
+end
+
 def main
+  method = App.new
   print_menu
   user_input = get_choice
+  match_input(user_input)
 end
 
 main

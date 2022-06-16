@@ -8,12 +8,25 @@ require './nameable'
 require './decorator'
 require './capitalizedecorator'
 require './trimmerdecorator'
+require './main.rb'
 
-puts "Welcome to my Library! You may perform the following tasks:
-1. List all books.
-2. List all people
-3. Create a person
-4. Create a book.
-5. Create a rental
-6. List all rentals for a given person id.
-7. Exit"
+def list_all_books
+end
+
+def list_all_people
+end
+
+def create_a_person
+end
+
+def create_a_book
+end
+
+def create_a_rental
+end
+
+def list_all_rentals_id
+end
+
+def quit_app
+end

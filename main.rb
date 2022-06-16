@@ -12,8 +12,14 @@ def print_menu
   Choose (1-7): "
 end
 
+def get_choice
+  choice = gets.chomp.to_i
+  choice
+end
+
 def main
   print_menu
+  user_input = get_choice
 end
 
 main

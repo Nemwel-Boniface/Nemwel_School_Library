@@ -81,6 +81,23 @@ class App
   end
 
   def create_a_rental
+    puts "Splendid! We are happy you want to read."
+    @people.map.each_with_index do |person, index|
+      puts "=> #{index}) [#{person.classroom}] Name: #{person.name}, ID: #{person.id}"
+    end
+    print "Enter your index: "
+    person_index = gets.chomp.to_i
+    print "Enter date of renting the book:(yyyy-mm-dd) "
+    date = gets.chomp
+    print "Enter the book index: "
+    @books.each_with_index do |bk, index|
+      puts "=> #{index}) Title: #{bk.title}, Author: #{bk.author}"
+    end
+    book_index = gets.chomp.to_i
+    @person = @people[person_index]
+    @book = @books[book_index]
+    @rentals.push(Rental.new(@person, date, @book))
+    puts "Book was rented succesfully!"
   end
 
   def list_all_rentals_id

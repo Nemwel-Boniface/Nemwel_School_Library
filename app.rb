@@ -55,6 +55,17 @@ class App
       create_student
 
     when 2
+      puts "Great! let\'s create the Teacher!"
+      print "Teacher age: "
+      teacher_age = gets.chomp.to_i
+      print "Teacher name: "
+      teacher_name = gets.chomp
+      print "Teacher specialization: "
+      teacher_specs = gets.chomp
+      teacher_permission = true
+      @people.push(Teacher.new(teacher_age, teacher_name, teacher_specs, 'junior', teacher_permission))
+      # @people.push([teacher_age, teacher_name, teacher_specs, teacher_permission])
+      puts "Teacher is created successfully"
     end
   end
 

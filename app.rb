@@ -44,6 +44,18 @@ class App
   end
 
   def create_a_person
+    print "Hello! Would you like to create a:
+    1. Student
+    2. Teacher
+    Choose between the two: "
+    choice = gets.chomp.to_i
+
+    case choice
+    when 1
+      create_student
+
+    when 2
+    end
   end
 
   def create_a_book

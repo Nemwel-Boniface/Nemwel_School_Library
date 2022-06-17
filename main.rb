@@ -4,7 +4,7 @@ require_relative './app'
 @method = App.new
 
 def print_menu
-  print "Welcome to my Library! You may perform the following tasks:
+  print 'Welcome to my Library! You may perform the following tasks:
   1. List all books.
   2. List all people
   3. Create a person
@@ -12,12 +12,11 @@ def print_menu
   5. Create a rental
   6. List all rentals for a given person id.
   7. Exit
-  Choose (1-7): "
+  Choose (1-7): '
 end
 
-def get_choice
-  choice = gets.chomp.to_i
-  choice
+def user_choice
+  gets.chomp.to_i
 end
 
 def match_input(choice)
@@ -37,18 +36,18 @@ def match_input(choice)
   when 7
     @method.quit_app
   else
-    puts "Not a valid choice"
+    puts 'Not a valid choice'
   end
 end
 
 def main(status)
-  while true
+  loop do
     break unless status
+
     print_menu
-    user_input = get_choice
+    user_input = user_choice
     match_input(user_input)
   end
 end
 
 main(true)
-

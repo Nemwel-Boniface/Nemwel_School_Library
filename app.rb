@@ -1,10 +1,9 @@
-# require_relative './main'
-require "./person.rb"
-require "./student.rb"
-require "./teacher.rb"
-require "./rental.rb"
-require "./book.rb"
-require "./classroom.rb"
+require './person'
+require './student'
+require './teacher'
+require './rental'
+require './book'
+require './classroom'
 require './nameable'
 require './decorator'
 require './capitalizedecorator'
@@ -12,6 +11,7 @@ require './trimmerdecorator'
 
 class App
   attr_accessor :people, :book, :rental
+
   def initialize()
     @people = []
     @books = []
@@ -41,14 +41,14 @@ class App
   end
 
   def create_student
-    puts "Great! let's create the student!"
-    print "Student age: "
+    puts 'Great! let\'s create the student!'
+    print 'Student age: '
     stdage = gets.chomp.to_i
-    print "Student name: "
+    print 'Student name: '
     stdname = gets.chomp
-    print "Student class: "
+    print 'Student class: '
     std_class = gets.chomp
-    print "Parent permission? true/ false: "
+    print 'Parent permission? true/ false: '
     stdparpermission = gets.chomp
     case stdparpermission
     when 'true'
@@ -56,18 +56,17 @@ class App
     when 'false'
       @people.push(Student.new(stdage, std_class, stdname, false))
     else
-      puts "That was an invalid entry"
+      puts 'That was an invalid entry'
     end
 
-    puts "Student is created successfully"
-    print @people
+    puts 'Student is created successfully'
   end
 
   def create_a_person
-    print "Hello! Would you like to create a:
+    print 'Hello! Would you like to create a:
     1. Student
     2. Teacher
-    Choose between the two: "
+    Choose between the two: '
     choice = gets.chomp.to_i
 
     case choice
@@ -75,27 +74,27 @@ class App
       create_student
 
     when 2
-      puts "Great! let\'s create the Teacher!"
-      print "Teacher age: "
+      puts 'Great! let\'s create the Teacher!'
+      print 'Teacher age: '
       teacher_age = gets.chomp.to_i
-      print "Teacher name: "
+      print 'Teacher name: '
       teacher_name = gets.chomp
-      print "Teacher specialization: "
+      print 'Teacher specialization: '
       teacher_specs = gets.chomp
       teacher_permission = true
       @people.push(Teacher.new(teacher_age, teacher_name, teacher_specs, 'junior', teacher_permission))
-      puts "Teacher is created successfully"
+      puts 'Teacher is created successfully'
     end
   end
 
   def create_a_book
-    print "Splendid! we love new books.
-    Enter the book title: "
+    print 'Splendid! we love new books.
+    Enter the book title: '
     book_title = gets.chomp
-    print "Enter the book's author: "
+    print 'Enter the book\'s author: '
     book_author = gets.chomp
     @books.push(Book.new(book_title, book_author))
-    puts "Book was added succesfully!"
+    puts 'Book was added succesfully!'
   end
 
   def create_a_rental

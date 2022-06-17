@@ -64,7 +64,6 @@ class App
       teacher_specs = gets.chomp
       teacher_permission = true
       @people.push(Teacher.new(teacher_age, teacher_name, teacher_specs, 'junior', teacher_permission))
-      # @people.push([teacher_age, teacher_name, teacher_specs, teacher_permission])
       puts "Teacher is created successfully"
     end
   end
@@ -75,36 +74,55 @@ class App
     book_title = gets.chomp
     print "Enter the book's author: "
     book_author = gets.chomp
-    # @book.push([book_title, book_author])
     @books.push(Book.new(book_title, book_author))
     puts "Book was added succesfully!"
   end
 
   def create_a_rental
-    puts "Splendid! We are happy you want to read."
-    @people.map.each_with_index do |person, index|
-      puts "=> #{index}) [#{person.classroom}] Name: #{person.name}, ID: #{person.id}"
+    if @books.empty? && @people.empty?
+      puts 'Huh, nothing to see here'
+    else
+      puts 'Select the id of the book you want: '
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}) Title: \"#{book.title}\" Author: #{book.author}"
+      end
+      number = gets.chomp.to_i
+      index = number - 1
+
+      puts 'Type your ID: '
+      @people.each { |person| puts "[#{person.class}] Name: #{person.name} | Age: #{person.age} | ID: #{person.id}" }
+      identity = gets.chomp.to_i
+
+      individual = @people.select { |person| person.id == identity }.first
+
+      print 'Enter date of renting the book:(yyyy-mm-dd) '
+      date = gets.chomp.to_s
+      rent = Rental.new(individual, date, @books[index])
+      @rentals << rent
+
+      puts 'Book rented successfully'
     end
-    print "Enter your index: "
-    person_index = gets.chomp.to_i
-    print "Enter date of renting the book:(yyyy-mm-dd) "
-    date = gets.chomp
-    print "Enter the book index: "
-    @books.each_with_index do |bk, index|
-      puts "=> #{index}) Title: #{bk.title}, Author: #{bk.author}"
-    end
-    book_index = gets.chomp.to_i
-    @person = @people[person_index]
-    @book = @books[book_index]
-    @rentals.push(Rental.new(@person, date, @book))
-    puts "Book was rented succesfully!"
   end
 
   def list_all_rentals_id
+    puts 'There are no rentals available at the moment' if @rentals.empty?
+    print 'Wonderful! let\'s find your book!\n, Type your ID: '
+    id = gets.chomp.to_i
+    rental = @rentals.select { |rent| rent.person.id == id }
+    if rental.empty?
+      puts 'Sorry there are no records for that ID'
+    else
+      puts 'Here are your records: '
+      puts ''
+      rental.each_with_index do |record, index|
+        puts "#{index + 1}) Date: #{record.date} Borrower: #{record.person.name}
+         Status: #{record.person.class} Borrowed book: \"#{record.book.title}\" by #{record.book.author}"
+      end
+    end
   end
 
   def quit_app
-    puts 'Thank you for using this app!'
+    puts 'Thank you for using my app!'
     exit(true)
   end
 end

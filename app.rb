@@ -70,6 +70,14 @@ class App
   end
 
   def create_a_book
+    print "Splendid! we love new books.
+    Enter the book title: "
+    book_title = gets.chomp
+    print "Enter the book's author: "
+    book_author = gets.chomp
+    # @book.push([book_title, book_author])
+    @books.push(Book.new(book_title, book_author))
+    puts "Book was added succesfully!"
   end
 
   def create_a_rental

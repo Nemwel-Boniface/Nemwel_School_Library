@@ -41,6 +41,26 @@ class App
   end
 
   def create_student
+    puts "Great! let's create the student!"
+    print "Student age: "
+    stdage = gets.chomp.to_i
+    print "Student name: "
+    stdname = gets.chomp
+    print "Student class: "
+    std_class = gets.chomp
+    print "Parent permission? true/ false: "
+    stdparpermission = gets.chomp
+    case stdparpermission
+    when 'true'
+      @people.push(Student.new(stdage, std_class, stdname, true))
+    when 'false'
+      @people.push(Student.new(stdage, std_class, stdname, false))
+    else
+      puts "That was an invalid entry"
+    end
+
+    puts "Student is created successfully"
+    print @people
   end
 
   def create_a_person
